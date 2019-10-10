@@ -10,13 +10,27 @@ namespace FightSimV1
     {
         //Variabler till fighters
         private int hp = 100; 
-        public string name = "";
+        private string name = "";
         public static Random gen = new Random();
+        private List<string> names = new List<string>() {"Kerregan", "Tycus" , "Raynor" ,"Rouge","Abathur"};
+
+        public void PickName()
+        {
+            int index = gen.Next(0,names.Count);
+             name = names[index];
+        }
+
+        public string FighterName()
+        {
+            return name;
+        }
 
         public int Attack() //Slumpar hur mycket skada en fighter gör i sitt nästa slag
         {
             return gen.Next(5, 20); //Kan göra mellan 5 till 20 skada
         }
+
+
 
         public void Hurt(int amount) //Subtraherar en fighters hp med hur mycket skada andra spelaren gör. 
         {

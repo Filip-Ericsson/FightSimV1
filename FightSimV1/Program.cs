@@ -11,11 +11,16 @@ namespace FightSimV1
         static void Main(string[] args)
         {
             //Skapar två fighters
-            Fighter FighterA = new Fighter(); 
-            FighterA.name = "Raynor";
+            Fighter FighterA = new Fighter();
+            FighterA.PickName();
             Fighter FighterB = new Fighter();
-            FighterB.name = "Tycus";
+            FighterB.PickName();
 
+            while (FighterA.FighterName()== FighterB.FighterName())
+            {
+                Console.WriteLine("New name");
+                FighterB.PickName();
+            }
             bool stillFighting = true; //en boolean som blir false när en fighter är död
 
             while (stillFighting)
@@ -24,20 +29,20 @@ namespace FightSimV1
 
                 FighterA.Hurt(FighterB.Attack()); //se ovan
 
-                Console.WriteLine(FighterA.name+" Hp is: " + FighterA.GetHp()); //skriver varje fighters hp
-                Console.WriteLine(FighterB.name + " Hp is: " + FighterB.GetHp());
+                Console.WriteLine(FighterA.FighterName() + " Hp is: " + FighterA.GetHp() ) ; //skriver varje fighters hp
+                Console.WriteLine(FighterB.FighterName() + " Hp is: " + FighterB.GetHp() + "\n");
 
 
                 //Kollar om någon fighter är död
                 if (FighterA.IsAlive() == false)
                 {
-                    Console.WriteLine(FighterB.name +" is our winner!");
+                    Console.WriteLine(FighterB.FighterName() + " is our winner!");
                     Console.ReadLine();
                     stillFighting = false;
                 }
                 else if (FighterB.IsAlive() == false )
                 {
-                    Console.WriteLine(FighterA.name +" winns this battle!");
+                    Console.WriteLine(FighterA.FighterName() + " winns this battle!");
                     Console.ReadLine();
                     stillFighting = false;
                 }
